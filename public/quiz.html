@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link rel="shortcut icon" href="../assets/icon/favicon2.ico" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IdentidadeRosa | Dashboards</title>
+
+
+    <link rel="stylesheet" href="./css/dashboards.css">
+    <script src="../js/sessao.js"></script>
+    <script src="./../js/alerta.js"></script>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- scripts do Chart.js - 2022-1 -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!--FONT AWESOME-->
+    <script src="https://kit.fontawesome.com/9f7414eb10.js" crossorigin="anonymous"></script>
+</head>
+
+<!-- <body onload=" atualizarFeed()"> -->
+    <img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
+
+<body>
+
+    <div class="janela">
+        <div class="header-left">
+            <h1>Identidade <span>Rosa</span></h1>
+
+            <div class="hello">
+                <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
+            </div>
+
+
+
+            <div class="btn-logout">
+                <a href="index.html">
+                    <h3>Sair</h3>
+                </a>
+            </div>
+            <div class="btn-logout2">
+                <a href="dashboard.html">
+                    <h4>Acesse a Dashboard</h4>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="dash">
+            <div class="titquiz">
+                <h2>Qual <span>Barbie</span> você é?</h2>
+            </div>
+            <div class="titquiz2">
+                <h3>Coloque números de 0 a 10 (sendo 0 o menor e 10 o de maior índice)</h3>
+            </div>
+            <div class="pergunta">
+                <p>Quanto você gosta de moda, roupas e tendências?</p><br>
+            </div>
+            <input type="text" id="idmoda">
+            <div class="pergunta">
+                <p>Quanto você gosta de tecnologia, programação, novidades digitais?</p>
+                <br>
+            </div>
+            <input type="text" id="idtech">
+            <div class="pergunta">
+                <p>Quanto você gosta de desenhar, criar, inventar coisas novas?</p><br>
+            </div>
+            <input type="text" id="idcriativa">
+            <div class="pergunta">
+                <p>Quanto você gosta de atividade física e esportes?</p><br>
+            </div>
+            <input type="text" id="idesporte">
+            <div class="pergunta">
+                <p>Quanto você gosta de estudar, aprender coisas novas, se aprofundar?</p><br>
+            </div>
+            <input type="text" id="idestudar">
+            <div class="pergunta">
+                <p>Quanto você gosta de maquiagem, estética e autocuidado?</p><br>
+
+            </div>
+            <input type="text" id="idmaquiar">
+            <div class="pergunta">
+                <p>Quanto você gosta de viajar, conhecer lugares e viver experiências?</p><br>
+
+            </div>
+            <input type="text" id="idviajar">
+            <div class="botao">
+                <br><button onclick="quiz()">veja seu resultado</button>
+            </div>
+            <div id="resultado"></div>
+        </div>
+    </div>
+<img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
+</body>
+
+</html>
+<script>
+    function quiz() {
+        resultado.innerHTML = ""
+        let moda = Number(idmoda.value)
+        let tech = Number(idtech.value)
+        let criativa = Number(idcriativa.value)
+        let esporte = Number(idesporte.value)
+        let estudo = Number(idestudar.value)
+        let maquiar = Number(idmaquiar.value)
+        let viagem = Number(idviajar.value)
+
+        let resultadobarbie =""
+        let imagem =""
+
+        if (moda == "" || tech == "" || criativa == "" || esporte == "" || estudo == "" || maquiar == "" || viagem == "") {
+            resultado.innerHTML = `preencha todos os campos!`
+            return
+        }
+        else if (moda < 0 || moda > 10 && tech < 0 || tech > 10 && criativa < 0 || criativa > 10 && esporte < 0 || esporte > 10 && maquiar < 0 || maquiar > 10 && viagem < 0 || viagem > 10) {
+            resultado.innerHTML = `apenas numeros de 0 a 10`
+            return
+        }
+        else if (moda >= 8 && maquiar >= 7 || moda >= 7 && criativa >= 7 || esporte < 5 && moda >= 7 || esporte < 5 && moda >= 7) {
+        resultadobarbie = "fashionista"
+        imagem = "<img src='assets/imgs/barbieFashion.jpeg' width ='250px'> "
+        }
+        else if (tech >= 7 && criativa >= 7 || tech >= 7 && estudo >= 6 || esporte < 5 && tech >= 7) {
+        resultadobarbie = "programadora"
+        imagem = "<img src='assets/imgs/barbieprogramadora.jpeg' width ='250px'>"
+        }
+        else if (esporte >= 7 && viagem >= 6 || esporte > 9) {
+        resultadobarbie = "esportista"
+        imagem = "<img src='assets/imgs/barbieesportista.jpeg' width ='250px'>"
+        }
+        else if (criativa >= 7 && maquiar > 6 || criativa > 9) {
+        resultadobarbie = "artista"
+        imagem = "<img src='assets/imgs/barbieartista.jpeg' width ='250px'>"
+        }
+        else if (viagem >= 8 && estudo > 6 || viagem > 8 && esporte > 5) {
+        resultadobarbie = "aventureira"
+        imagem = "<img src='assets/imgs/barbieaventureira.jpeg'width ='250px'>"
+        }
+        else {
+        resultadobarbie = "exploradora"
+        imagem = "<img src='assets/imgs/barbieexplo.jpeg' width ='250px'>"
+        }
+        resultado.innerHTML +=` Você é uma Barbie ${resultadobarbie} <br>`
+        resultado.innerHTML+=`${imagem}`
+    } 
+</script>
+
+
+
+
+
+</body>
+
+</html>
+
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+</script>

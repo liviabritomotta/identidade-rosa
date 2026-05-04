@@ -1,6 +1,9 @@
 /* pagina mural */
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
+
 
 body {
   margin: 0;
@@ -15,7 +18,7 @@ body {
 
 .dash-right .avisos {
   width: 100%;
-  color: rgb(216, 216, 216);
+  color: pink;
   font-family: 'Barlow', 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -120,7 +123,7 @@ body {
   position: relative;
   top: 0;
   left: 20%;
-  background-color: #161618;
+  background-color: #ffade0;
   height: 100vh;
   overflow: auto;
 }
@@ -348,8 +351,17 @@ canvas {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  border-right: 3px solid #32b9cd;
-  background-color: #212124;
+  border-right: 3px solid #ff4c9d;;
+  background-color: #c1e2f5;
+}
+.header-left span{
+  color: #A00048;
+  font-family: 'Satisfy', cursive;
+}
+.header-left h1{
+color: #020202;
+  width: fit-content;
+  font-weight: 500;
 }
 
 .dash-right {
@@ -364,9 +376,6 @@ canvas {
   overflow: auto;
 }
 
-.header-left h1 {
-  color: #32b9cd;
-}
 
 .hello {
   width: 100%;
@@ -375,7 +384,7 @@ canvas {
 }
 
 .hello h3 {
-  color: #e3b062;
+  color:#A00048;
   font-weight: 300;
   font-size: 1.2rem;
 }
@@ -418,11 +427,69 @@ canvas {
   margin: 0;
   padding: 0;
   width: 20%;
-  background-color: #32b9cd;
+  background-color: #ff1c99;
   color: white;
   border-radius: 10px;
   text-align: center;
   padding: 10px 15px;
   margin-bottom: 100px;
   cursor: pointer;
+}
+.btn-logout2 {
+  margin: 0;
+  padding: 10px 30px;
+  width: 20%;
+  background-color: #ff1c99;
+  color: white;
+  border-radius: 10px;
+  display:flex;
+  justify-content:center;
+  margin-bottom: 100px;
+  cursor: pointer;
+}
+.btn-logout2 h4{
+  text-align: center;
+}
+.pergunta{
+  display: flex;
+  gap:120px;
+  align-items: center;
+  margin-left: 50px;
+}
+ input{
+ display: flex;
+ justify-content: center;
+   align-items: center;
+   margin-left:50px;
+   border-radius: 20px;
+   padding: 5px 5px;
+   gap:20px;
+}
+
+.pergunta p{
+  font-family: 'Poppins', cursive;
+  font-size:15px;
+  color:#A00048;
+  border:2px solid white;
+}
+
+button{
+  border-radius: 20px;
+  color:white;
+  background-color: #A00048;
+  padding:10px 7px;
+  margin-left:50px;
+  border:2px solid white
+}
+.titquiz{
+  color:white;
+  font-family:  'Satisfy', cursive;
+  font-size: 40px;
+   margin-left: 50px;
+}
+
+.titquiz2{
+  margin-left:50px;
+  color:#000000;
+  font-size: 15px;
 }

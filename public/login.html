@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>AquaTech | Login</title>
+    <title>IdentidadeRosa</title>
 
     <script src="./js/sessao.js"></script>
 
@@ -58,7 +58,9 @@
                     </div>
                     <button class="botao" onclick="entrar()">Entrar</button>
                 </div>
-
+                <div class="textologin">
+                    <h4>não tem conta? se <a href="cadastro.html">cadastre</a> aqui</h4>
+                </div>
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/circle-loading.gif" id="loading-gif">
                 </div>
@@ -71,7 +73,7 @@
     <!--footer inicio-->
     <div class="footer">
         <div class="container">
-            <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
+            <h4>Feito com amor por aluna Livia &hearts; SPTech &copy; 2025</h4>
             <span class="version">v1.0.0</span>
         </div>
     </div>
@@ -124,10 +126,9 @@
                     sessionStorage.EMAIL_USUARIO = json.email;
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
-                    sessionStorage.AQUARIOS = JSON.stringify(json.aquarios)
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location.href = "./historia.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
