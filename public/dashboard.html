@@ -50,13 +50,13 @@
         <div class="dash">
             <div class="graficos">
                 <div class="grafico">
-                    <h3 class="titulo-grafico">Gráfico 1</h3>
+                    <h3 class="titulo-grafico">Gráfico de dados do quiz</h3>
                     <div class="chart-container">
                         <canvas id="grafico1"></canvas>
                     </div>
                 </div>
                 <div class="grafico">
-                    <h3 class="titulo-grafico">Gráfico 2</h3>
+                    <h3 class="titulo-grafico">Como evoluiu a receita da Barbie ao longo dos anos?</h3>
                     <div class="chart-container">
                         <canvas id="grafico2"></canvas>
                     </div>
@@ -77,7 +77,7 @@
     new Chart(ctx, {
         type: 'doughnut',
         data: {
-            labels: ['Red', 'Blue', 'Yellow'],
+            labels: ['red', 'Blue', 'Yellow'],
             datasets: [{
                 label: 'My First Dataset',
                 data: [300, 50, 100],
@@ -99,21 +99,21 @@
     new Chart(ctx2, {
         type: 'bar',
         data: {
-            labels: ['Red', 'Blue', 'Yellow'],
+            labels: ['2000', '2005', '2010', '2015', '2020', '2025', '2026'],
             datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
+                label: 'Receita gerada pela vendas de barbie a  cada 5 anos (em bilhões)',
+                data: [1.9, 1.6, 1.2, 0.9, 1.2, 1.5, 1.6],
                 backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
+                    'rgb(255, 99, 132)'
                 ],
                 hoverOffset: 4
             }]
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+
+        
         }
     });
 </script>
