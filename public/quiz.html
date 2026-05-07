@@ -26,7 +26,7 @@
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
-    <img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
+<img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
 
 <body>
 
@@ -52,54 +52,58 @@
             </div>
 
         </div>
-
         <div class="dash">
-            <div class="titquiz">
-                <h2>Qual <span>Barbie</span> você é?</h2>
-            </div>
-            <div class="titquiz2">
-                <h3>Coloque números de 0 a 10 (sendo 0 o menor e 10 o de maior índice)</h3>
-            </div>
-            <div id="blocoQuiz">
-            <div class="pergunta">
-                <p>Quanto você gosta de moda, roupas e tendências?</p><br>
-            </div>
-            <input type="text" id="idmoda">
-            <div class="pergunta">
-                <p>Quanto você gosta de tecnologia, programação, novidades digitais?</p>
-                <br>
-            </div>
-            <input type="text" id="idtech">
-            <div class="pergunta">
-                <p>Quanto você gosta de desenhar, criar, inventar coisas novas?</p><br>
-            </div>
-            <input type="text" id="idcriativa">
-            <div class="pergunta">
-                <p>Quanto você gosta de atividade física e esportes?</p><br>
-            </div>
-            <input type="text" id="idesporte">
-            <div class="pergunta">
-                <p>Quanto você gosta de estudar, aprender coisas novas, se aprofundar?</p><br>
-            </div>
-            <input type="text" id="idestudar">
-            <div class="pergunta">
-                <p>Quanto você gosta de maquiagem, estética e autocuidado?</p><br>
+            <div class="quiz_perguntas">
+                <div class="titquiz">
+                    <h2>Qual <span>Barbie</span> você é?</h2>
+                </div>
+                <div class="titquiz2">
+                    <h3>Coloque números de 0 a 10 (sendo 0 o menor e 10 o de maior índice)</h3>
+                </div>
+                <div id="blocoQuiz">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de moda, roupas e tendências?</p><br>
+                    </div>
+                    <input type="text" id="idmoda">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de tecnologia, programação, novidades digitais?</p>
+                        <br>
+                    </div>
+                    <input type="text" id="idtech">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de desenhar, criar, inventar coisas novas?</p><br>
+                    </div>
+                    <input type="text" id="idcriativa">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de atividade física e esportes?</p><br>
+                    </div>
+                    <input type="text" id="idesporte">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de estudar, aprender coisas novas, se aprofundar?</p><br>
+                    </div>
+                    <input type="text" id="idestudar">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de maquiagem, estética e autocuidado?</p><br>
+
+                    </div>
+                    <input type="text" id="idmaquiar">
+                    <div class="pergunta">
+                        <p>Quanto você gosta de viajar, conhecer lugares e viver experiências?</p><br>
+
+                    </div>
+                    <input type="text" id="idviajar">
+                    <div class="botao">
+                        <br><button onclick="quiz()">veja seu resultado</button>
+                    </div>
+                </div>
 
             </div>
-            <input type="text" id="idmaquiar">
-            <div class="pergunta">
-                <p>Quanto você gosta de viajar, conhecer lugares e viver experiências?</p><br>
-
+            <div class="quiz_resultado">
+                <div id="resultado"></div>
             </div>
-            <input type="text" id="idviajar">
-            <div class="botao">
-                <br><button onclick="quiz()">veja seu resultado</button>
-            </div>
-            
-            <div id="resultado"></div>
         </div>
-    </div>
-<img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
+
+        <img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
 </body>
 
 </html>
@@ -114,8 +118,8 @@
         let maquiar = Number(idmaquiar.value)
         let viagem = Number(idviajar.value)
 
-        let resultadobarbie =""
-        let imagem =""
+        let resultadobarbie = ""
+        let imagem = ""
 
         if (moda == "" || tech == "" || criativa == "" || esporte == "" || estudo == "" || maquiar == "" || viagem == "") {
             resultado.innerHTML = `preencha todos os campos!`
@@ -125,32 +129,41 @@
             resultado.innerHTML = `apenas numeros de 0 a 10`
             return
         }
-        else if (moda >= 8 && maquiar >= 7 || moda >= 7 && criativa >= 7 || esporte < 5 && moda >= 7 || esporte < 5 && moda >= 7) {
-        resultadobarbie = "fashionista"
-        imagem = "<img src='assets/imgs/barbieFashion.jpeg' width ='250px'> "
+        else if (moda >= 8 && maquiar >= 9 || moda >= 7 && criativa >= 7 && maquiar >= 7 || esporte < 5 && moda >= 9 ) {
+            resultadobarbie = "fashionista"
+            imagem = "<img src='assets/imgs/barbieFashion.jpeg' width ='250px'> "
         }
         else if (tech >= 7 && criativa >= 7 || tech >= 7 && estudo >= 6 || esporte < 5 && tech >= 7) {
-        resultadobarbie = "programadora"
-        imagem = "<img src='assets/imgs/barbieprogramadora.jpeg' width ='250px'>"
+            resultadobarbie = "programadora"
+            imagem = "<img src='assets/imgs/barbieprogramadora.jpeg' width ='250px'>"
         }
         else if (esporte >= 7 && viagem >= 6 || esporte > 9) {
-        resultadobarbie = "esportista"
-        imagem = "<img src='assets/imgs/barbieesportista.jpeg' width ='250px'>"
+            resultadobarbie = "esportista"
+            imagem = "<img src='assets/imgs/barbieesportista.jpeg' width ='250px'>"
         }
         else if (criativa >= 7 && maquiar > 6 || criativa > 9) {
-        resultadobarbie = "artista"
-        imagem = "<img src='assets/imgs/barbieartista.jpeg' width ='250px'>"
+            resultadobarbie = "artista"
+            imagem = "<img src='assets/imgs/barbieartista.jpeg' width ='250px'>"
         }
         else if (viagem >= 8 && estudo > 6 || viagem > 8 && esporte > 5) {
-        resultadobarbie = "aventureira"
-        imagem = "<img src='assets/imgs/barbieaventureira.jpeg'width ='250px'>"
+            resultadobarbie = "aventureira"
+            imagem = "<img src='assets/imgs/barbieaventureira.jpeg'width ='250px'>"
         }
         else {
-        resultadobarbie = "exploradora"
-        imagem = "<img src='assets/imgs/barbieexplo.jpeg' width ='250px'>"
+            resultadobarbie = "exploradora"
+            imagem = "<img src='assets/imgs/barbieexplo.jpeg' width ='250px'>"
         }
-        resultado.innerHTML +=` Você é uma Barbie ${resultadobarbie} <br>`
-        resultado.innerHTML+=`${imagem}`
+        resultado.innerHTML = `
+            <div class="card-barbie">
+                <h2>Seu Resultado:</h2>
+                
+                <p>Você é uma Barbie <span>${resultadobarbie}</span></p>
+                
+                <div class="imagem-barbie">
+                    ${imagem}
+                </div>
+            </div>
+        `
     } 
 </script>
 

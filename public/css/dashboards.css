@@ -126,6 +126,7 @@ body {
   background-color: #ffade0;
   height: 100vh;
   overflow: auto;
+  display: flex;
 }
 
 .graficos {
@@ -545,4 +546,49 @@ button {
 .blocoQuiz{
   padding:50px;
 color:white;
+}
+
+.quiz_perguntas {
+  width: 60%;
+}
+
+.quiz_resultado {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-barbie {
+    background: linear-gradient(135deg, #ff9ecf, #ff69b4);
+    width: 320px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    color: white;
+    font-family: Arial, sans-serif; 
+}
+
+.card-barbie h2 {
+    margin-bottom: 15px;
+    font-size: 28px;
+}
+
+.card-barbie p {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.card-barbie span {
+    font-weight: bold;
+    color: #fff700;
+    text-transform: uppercase;
+}
+
+.imagem-barbie img {
+    border-radius: 15px;
+    border: 4px solid white;
+    margin-top: 10px;
 }
