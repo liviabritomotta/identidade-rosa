@@ -120,13 +120,9 @@ body {
 
 .dash {
   width: 80%;
-  position: relative;
-  top: 0;
-  left: 20%;
+  min-height: 100vh;
   background-color: #ffade0;
-  height: 100vh;
-  overflow: auto;
-  display: flex;
+  display: flex;  
 }
 
 .graficos {
@@ -374,7 +370,9 @@ canvas {
 
 .janela {
   display: flex;
+  width: 100vw;
   /* width: 100vw; */
+  min-height: 100vh;
 }
 
 .header-left a {
@@ -383,18 +381,14 @@ canvas {
 }
 
 .header-left {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 999;
-  height: 100vh;
+  min-height: 100vh;
   width: 20%;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
   border-right: 3px solid #ff4c9d;
-  ;
   background-color: #c1e2f5;
 }
 

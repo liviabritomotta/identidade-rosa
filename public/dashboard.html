@@ -73,35 +73,67 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-    const ctx = document.getElementById('grafico1');
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['red', 'Blue', 'Yellow'],
-            datasets: [{
-                label: 'My First Dataset',
-                data: [300, 50, 100],
-                backgroundColor: [
-                    'rgb(255, 99, 132)',
-                    'rgb(54, 162, 235)',
-                    'rgb(255, 205, 86)'
-                ],
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-    });
+    let graficoPizza = null;
+
+    function carregarGraficoQuiz() {
+        fetch("/quiz/buscarResultados", {
+            method: "GET"
+        })
+            .then(function (resposta) {
+                return resposta.json();
+            })
+            .then(function (dados) {
+                console.log(dados);
+
+                var labelsGrafico = [];
+                var valoresGrafico = [];
+
+                for (var i = 0; i < dados.length; i++) {
+                    labelsGrafico.push(dados[i].resultado);
+                    valoresGrafico.push(dados[i].total);
+                }
+
+                const ctx = document.getElementById('grafico1');
+
+                graficoPizza = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labelsGrafico,
+                        datasets: [{
+                            label: 'Resultados do Quiz',
+                            data: valoresGrafico,
+                            backgroundColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(255, 159, 64)',
+                                'rgb(255, 205, 86)',
+                                'rgb(75, 192, 192)',
+                                'rgb(54, 162, 235)',
+                                'rgb(153, 102, 255)'
+                            ],
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false
+                    }
+                });
+            })
+            .catch(function (erro) {
+                console.log("Erro ao buscar dados do quiz:", erro);
+            });
+    }
+
+    carregarGraficoQuiz();
 
     const ctx2 = document.getElementById('grafico2');
+
     new Chart(ctx2, {
         type: 'bar',
         data: {
             labels: ['2000', '2005', '2010', '2015', '2020', '2025', '2026'],
             datasets: [{
-                label: 'Receita gerada pela vendas de barbie a  cada 5 anos (em bilhões)',
+                label: 'Receita gerada pela vendas de Barbie a cada 5 anos (em bilhões)',
                 data: [1.9, 1.6, 1.2, 0.9, 1.2, 1.5, 1.6],
                 backgroundColor: [
                     'rgb(255, 99, 132)'
@@ -111,9 +143,7 @@
         },
         options: {
             responsive: true,
-            maintainAspectRatio: false,
-
-        
+            maintainAspectRatio: false
         }
     });
 </script>

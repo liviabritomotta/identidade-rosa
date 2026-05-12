@@ -26,7 +26,7 @@
 </head>
 
 <!-- <body onload=" atualizarFeed()"> -->
-<img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
+<!-- <img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt=""> -->
 
 <body>
 
@@ -37,8 +37,6 @@
             <div class="hello">
                 <h3>Olá, <span id="b_usuario">usuário</span>!</h3>
             </div>
-
-
 
             <div class="btn-logout">
                 <a href="index.html">
@@ -103,78 +101,114 @@
             </div>
         </div>
 
-        <img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt="">
-</body>
+        <!-- <img src="web-data-viz/public/assets/imgs/barbieFashion.jpeg" alt=""> -->
+        <script>
+            b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
-</html>
-<script>
-    function quiz() {
-        resultado.innerHTML = ""
-        let moda = Number(idmoda.value)
-        let tech = Number(idtech.value)
-        let criativa = Number(idcriativa.value)
-        let esporte = Number(idesporte.value)
-        let estudo = Number(idestudar.value)
-        let maquiar = Number(idmaquiar.value)
-        let viagem = Number(idviajar.value)
+            function quiz() {
+                resultado.innerHTML = ""
 
-        let resultadobarbie = ""
-        let imagem = ""
+                let moda = Number(idmoda.value)
+                let tech = Number(idtech.value)
+                let criativa = Number(idcriativa.value)
+                let esporte = Number(idesporte.value)
+                let estudo = Number(idestudar.value)
+                let maquiar = Number(idmaquiar.value)
+                let viagem = Number(idviajar.value)
 
-        if (moda == "" || tech == "" || criativa == "" || esporte == "" || estudo == "" || maquiar == "" || viagem == "") {
-            resultado.innerHTML = `preencha todos os campos!`
-            return
-        }
-        else if (moda < 0 || moda > 10 && tech < 0 || tech > 10 && criativa < 0 || criativa > 10 && esporte < 0 || esporte > 10 && maquiar < 0 || maquiar > 10 && viagem < 0 || viagem > 10) {
-            resultado.innerHTML = `apenas numeros de 0 a 10`
-            return
-        }
-        else if (moda >= 8 && maquiar >= 9 || moda >= 7 && criativa >= 7 && maquiar >= 7 || esporte < 5 && moda >= 9 ) {
-            resultadobarbie = "fashionista"
-            imagem = "<img src='assets/imgs/barbieFashion.jpeg' width ='250px'> "
-        }
-        else if (tech >= 7 && criativa >= 7 || tech >= 7 && estudo >= 6 || esporte < 5 && tech >= 7) {
-            resultadobarbie = "programadora"
-            imagem = "<img src='assets/imgs/barbieprogramadora.jpeg' width ='250px'>"
-        }
-        else if (esporte >= 7 && viagem >= 6 || esporte > 9) {
-            resultadobarbie = "esportista"
-            imagem = "<img src='assets/imgs/barbieesportista.jpeg' width ='250px'>"
-        }
-        else if (criativa >= 7 && maquiar > 6 || criativa > 9) {
-            resultadobarbie = "artista"
-            imagem = "<img src='assets/imgs/barbieartista.jpeg' width ='250px'>"
-        }
-        else if (viagem >= 8 && estudo > 6 || viagem > 8 && esporte > 5) {
-            resultadobarbie = "aventureira"
-            imagem = "<img src='assets/imgs/barbieaventureira.jpeg'width ='250px'>"
-        }
-        else {
-            resultadobarbie = "exploradora"
-            imagem = "<img src='assets/imgs/barbieexplo.jpeg' width ='250px'>"
-        }
-        resultado.innerHTML = `
-            <div class="card-barbie">
-                <h2>Seu Resultado:</h2>
-                
-                <p>Você é uma Barbie <span>${resultadobarbie}</span></p>
-                
-                <div class="imagem-barbie">
-                    ${imagem}
-                </div>
+                let resultadobarbie = ""
+                let imagem = ""
+
+                if (
+                    idmoda.value == "" ||
+                    idtech.value == "" ||
+                    idcriativa.value == "" ||
+                    idesporte.value == "" ||
+                    idestudar.value == "" ||
+                    idmaquiar.value == "" ||
+                    idviajar.value == ""
+                ) {
+                    resultado.innerHTML = `preencha todos os campos!`
+                    return
+                }
+
+                if (
+                    moda < 0 || moda > 10 ||
+                    tech < 0 || tech > 10 ||
+                    criativa < 0 || criativa > 10 ||
+                    esporte < 0 || esporte > 10 ||
+                    estudo < 0 || estudo > 10 ||
+                    maquiar < 0 || maquiar > 10 ||
+                    viagem < 0 || viagem > 10
+                ) {
+                    resultado.innerHTML = `apenas numeros de 0 a 10`
+                    return
+                }
+
+                if ((moda >= 8 && maquiar >= 9) || (moda >= 7 && criativa >= 7 && maquiar >= 7) || (esporte < 5 && moda >= 9)) {
+                    resultadobarbie = "fashionista"
+                    imagem = "<img src='assets/imgs/barbieFashion.jpeg' width='250px'>"
+                }
+                else if ((tech >= 7 && criativa >= 7) || (tech >= 7 && estudo >= 6) || (esporte < 5 && tech >= 7)) {
+                    resultadobarbie = "programadora"
+                    imagem = "<img src='assets/imgs/barbieprogramadora.jpeg' width='250px'>"
+                }
+                else if ((esporte >= 7 && viagem >= 6) || esporte > 9) {
+                    resultadobarbie = "esportista"
+                    imagem = "<img src='assets/imgs/barbieesportista.jpeg' width='250px'>"
+                }
+                else if ((criativa >= 7 && maquiar > 6) || criativa > 9) {
+                    resultadobarbie = "artista"
+                    imagem = "<img src='assets/imgs/barbieartista.jpeg' width='250px'>"
+                }
+                else if ((viagem >= 8 && estudo > 6) || (viagem > 8 && esporte > 5)) {
+                    resultadobarbie = "aventureira"
+                    imagem = "<img src='assets/imgs/barbieaventureira.jpeg' width='250px'>"
+                }
+                else {
+                    resultadobarbie = "exploradora"
+                    imagem = "<img src='assets/imgs/barbieexplo.jpeg' width='250px'>"
+                }
+
+                resultado.innerHTML = `
+        <div class="card-barbie">
+            <h2>Seu Resultado:</h2>
+            <p>Você é uma Barbie <span>${resultadobarbie}</span></p>
+            <div class="imagem-barbie">
+                ${imagem}
             </div>
-        `
-    } 
-</script>
+        </div>
+    `
 
-
-
-
-
+                fetch("/quiz/cadastrar", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({
+                        fkUsuarioServer: sessionStorage.ID_USUARIO,
+                        modaServer: moda,
+                        techServer: tech,
+                        criativaServer: criativa,
+                        esporteServer: esporte,
+                        estudoServer: estudo,
+                        maquiarServer: maquiar,
+                        viagemServer: viagem,
+                        resultadoServer: resultadobarbie
+                    })
+                })
+                    .then(function (resposta) {
+                        if (resposta.ok) {
+                            console.log("Resultado do quiz cadastrado com sucesso!");
+                        } else {
+                            console.log("Erro ao cadastrar resultado do quiz.");
+                        }
+                    })
+                    .catch(function (erro) {
+                        console.log("Erro no fetch:", erro);
+                    });
+            } 
+        </script>
 </body>
 
 </html>
-
-<script>
-    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-</script>
