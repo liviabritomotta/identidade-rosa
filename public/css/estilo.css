@@ -323,6 +323,20 @@ body {
   border-radius: 20px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.15);
 }
+
+.card-historia .card-img {
+  width: 40%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.card-historia .card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+
 .card-historia2 {
   width: 80%;
   min-height: 350px;
@@ -334,7 +348,6 @@ body {
 
 }
 
-/* ÁREA DAS IMAGENS */
 .card-historia .img-card {
   width: 50%;
   height: 320px;
