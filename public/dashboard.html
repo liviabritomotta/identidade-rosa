@@ -48,20 +48,35 @@
         </div>
 
         <div class="dash">
+            <div class="kpis">
+                <div class="kpi">
+                    <h2>OIE</h2>
+                </div>
+                <div class="kpi">
+                </div>
+                <div class="kpi">
+                </div>
+            </div>
+
             <div class="graficos">
                 <div class="grafico">
                     <h3 class="titulo-grafico">Gráfico de dados do quiz</h3>
                     <div class="chart-container">
                         <canvas id="grafico1"></canvas>
                     </div>
+
                 </div>
+
                 <div class="grafico">
                     <h3 class="titulo-grafico">Como evoluiu a receita da Barbie ao longo dos anos?</h3>
                     <div class="chart-container">
                         <canvas id="grafico2"></canvas>
                     </div>
+
                 </div>
+
             </div>
+
         </div>
     </div>
 
@@ -125,6 +140,8 @@
     }
 
     carregarGraficoQuiz();
+
+
 
     const ctx2 = document.getElementById('grafico2');
 
