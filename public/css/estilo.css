@@ -34,6 +34,7 @@ body {
   justify-content: space-between;
   align-items: center;
   height: 100%;
+  width: 100%;
 }
 
 .header a {
@@ -47,13 +48,12 @@ body {
 }
 
 .navbar {
-  width: 200px;
+  width: 30%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   list-style: none;
   color: #A00048;
-  padding: 0 20px;
 }
 
 .titulo {
