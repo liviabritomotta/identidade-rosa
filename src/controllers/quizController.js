@@ -29,6 +29,7 @@ function buscarResultados(req, res) {
     quizModel.buscarResultados()
         .then(function (resultado) {
             res.status(200).json(resultado);
+            
         })
         .catch(function (erro) {
             console.log(erro);

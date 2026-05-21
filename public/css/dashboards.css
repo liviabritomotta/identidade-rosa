@@ -124,10 +124,10 @@ body {
   width: 80%;
   min-height: 100vh;
   background-color: #ffade0;
-  display: flex;  
+  display: flex;
 }
 
-.kpis{
+.kpis {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -135,37 +135,37 @@ body {
   margin-top: 5%;
 }
 
-.kpi h3 {
-  font-size:15px;
-  display: flex;
-  justify-content: center;
-  margin-top:-20px;
 
+.kpi h3 {
+  font-size: 15px;
 }
 
 .kpi p {
-  font-size:12px;
+  font-size: 16px;
+  flex-direction: column;
+  display: flex;
+margin-top:-15px;
 }
+
 .kpi {
   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
   padding: 20px 20px;
-  align-items: center;
   background-color: #A00048;
-  width: 120px;
-  height: 50px;
+  width: 160px;
+  height: 90px;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #A00048;
-  transition:500ms;
+  transition: 500ms;
   text-align: center;
   color: white;
-  align-items: center;
-  justify-content: center;
   font-size: 50px;
 }
 
-.kpi:hover{
+.kpi:hover {
   transition: 500ms;
-  transform:scale(1.10)
+  transform: scale(1.10)
 }
 
 .graficos {
@@ -176,6 +176,7 @@ body {
   padding: 20px;
   box-sizing: border-box;
   margin-top: 100px;
+
 }
 
 .titulo-grafico {
@@ -580,9 +581,10 @@ button {
   color: #000000;
   font-size: 15px;
 }
-.blocoQuiz{
-  padding:50px;
-color:white;
+
+.blocoQuiz {
+  padding: 50px;
+  color: white;
 }
 
 .quiz_perguntas {
@@ -597,35 +599,35 @@ color:white;
 }
 
 .card-barbie {
-    background: linear-gradient(135deg, #ff9ecf, #ff69b4);
-    width: 320px;
-    margin: 20px auto;
-    padding: 25px;
-    border-radius: 20px;
-    text-align: center;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
-    color: white;
-    font-family: Arial, sans-serif; 
+  background: linear-gradient(135deg, #ff9ecf, #ff69b4);
+  width: 320px;
+  margin: 20px auto;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  color: white;
+  font-family: Arial, sans-serif;
 }
 
 .card-barbie h2 {
-    margin-bottom: 15px;
-    font-size: 28px;
+  margin-bottom: 15px;
+  font-size: 28px;
 }
 
 .card-barbie p {
-    font-size: 22px;
-    margin-bottom: 15px;
+  font-size: 22px;
+  margin-bottom: 15px;
 }
 
 .card-barbie span {
-    font-weight: bold;
-    color: #fff700;
-    text-transform: uppercase;
+  font-weight: bold;
+  color: #fff700;
+  text-transform: uppercase;
 }
 
 .imagem-barbie img {
-    border-radius: 15px;
-    border: 4px solid white;
-    margin-top: 10px;
+  border-radius: 15px;
+  border: 4px solid white;
+  margin-top: 10px;
 }

@@ -28,7 +28,7 @@
 
 <!-- <body onload=" atualizarFeed()"> -->
 
-<body>
+<body onload="maiorresultado();pessoascriativas(); mediaidade(); carregarGraficoQuiz(); graficoLinhaUsuario()">
 
     <div class="janela">
         <div class="header-left">
@@ -41,7 +41,7 @@
 
 
             <div class="btn-logout" onclick="limparSessao()">
-                <a href="index.html"></a>
+                <a href="quiz.html"></a>
                 <h3>Sair</h3>
             </div>
 
@@ -50,15 +50,15 @@
         <div class="dash">
             <div class="kpis">
                 <div class="kpi">
-                    <h3>80%</h3>
+                    <h3 id="criatividade">0</h3>
                     <p>das pessoas que acessam o quiz são criativas</p>
                 </div>
                 <div class="kpi">
-                    <h3>18</h3>
-                    <p>é a idade que mais acessa o site</p>
+                    <h3 id="idade">0</h3>
+                    <p>é a média das idades que acessam o site</p>
                 </div>
                 <div class="kpi">
-                    <h3>exploradora</h3>
+                    <h3 id="quizresult">0</h3>
                     <p> top 1 no quiz</p>
                 </div>
             </div>
@@ -69,11 +69,10 @@
                     <div class="chart-container">
                         <canvas id="grafico1"></canvas>
                     </div>
-
                 </div>
 
                 <div class="grafico">
-                    <h3 class="titulo-grafico">Como evoluiu a receita da Barbie ao longo dos anos?</h3>
+                    <h3 class="titulo-grafico">Gráfico de dados do quiz</h3>
                     <div class="chart-container">
                         <canvas id="grafico2"></canvas>
                     </div>
@@ -83,6 +82,8 @@
             </div>
 
         </div>
+
+    </div>
     </div>
 
 
@@ -92,6 +93,103 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+
+    function pessoascriativas() {
+        fetch("/dashboard/criativa", {
+            method: "GET"
+        })
+            .then(function (resposta) {
+                return resposta.json();
+            })
+            .then(function (dados) {
+                criatividade.innerHTML = dados[0].quantidadecriativa
+
+            })
+            .catch(function (erro) {
+                console.log("Erro ao buscar pessoas criativas:", erro);
+            });
+    }
+    function maiorresultado() {
+        fetch("/dashboard/resultadoquiz", {
+            method: "GET"
+        })
+            .then(function (resposta) {
+                return resposta.json();
+            })
+            .then(function (dados) {
+                quizresult.innerHTML = dados[0].resultado
+
+            })
+            .catch(function (erro) {
+                console.log("Erro ao buscar maior resultado do quiz:", erro);
+            });
+    }
+
+    function graficoLinhaUsuario() {
+        fetch("/dashboard/resultadoUsuario/" + sessionStorage.ID_USUARIO)
+            .then(function (resposta) {
+                resposta.json()
+                    .then(function (resultados) {
+
+                        const ctx = document.getElementById('grafico2')
+                        new Chart(ctx, {
+                            type: "line",
+
+                            data: {
+                                labels: ["Moda", "Tech", "Criativa", "Esporte", "Estudo", "Maquiar", "Viagem"],
+                                datasets: [{
+                                    label: 'Perfil do usuário',
+                                    data: [
+                                        resultados[0].moda,
+                                        resultados[0].tech,
+                                        resultados[0].criativa,
+                                        resultados[0].esporte,
+                                        resultados[0].estudo,
+                                        resultados[0].maquiar,
+                                        resultados[0].viagem
+                                    ],
+                                    borderWidth: 3,
+                                    tension: 0.3,
+                                    borderColor: 'pink'
+                                }]
+                            },
+
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+
+                                plugins: {
+                                    legend: {
+                                        display: true
+                                    }
+                                },
+
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                    }
+                                }
+                            }
+                        });
+                    })
+            })
+    }
+
+    function mediaidade() {
+        fetch("/dashboard/nascimento", {
+            method: "GET"
+        })
+            .then(function (resposta) {
+                return resposta.json();
+            })
+            .then(function (dados) {
+                idade.innerHTML = dados[0].media
+
+            })
+            .catch(function (erro) {
+                console.log("Erro ao buscar média de idade:", erro);
+            });
+    }
 
     let graficoPizza = null;
 
@@ -144,28 +242,4 @@
             });
     }
 
-    carregarGraficoQuiz();
-
-
-
-    const ctx2 = document.getElementById('grafico2');
-
-    new Chart(ctx2, {
-        type: 'bar',
-        data: {
-            labels: ['2000', '2005', '2010', '2015', '2020', '2025', '2026'],
-            datasets: [{
-                label: 'Receita gerada pela vendas de Barbie a cada 5 anos (em bilhões)',
-                data: [1.9, 1.6, 1.2, 0.9, 1.2, 1.5, 1.6],
-                backgroundColor: [
-                    'rgb(255, 99, 132)'
-                ],
-                hoverOffset: 4
-            }]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false
-        }
-    });
 </script>

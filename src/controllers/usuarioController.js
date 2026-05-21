@@ -47,7 +47,7 @@ function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var nome = req.body.nomeServer;
     var email = req.body.emailServer;
-    var nascimento =req.body.nascimentoServer;
+    var nascimento =req.body.nascServer;
     var senha = req.body.senhaServer;
     
 
