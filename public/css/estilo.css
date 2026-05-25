@@ -370,6 +370,22 @@ li{
   border-radius: 15px;
 }
 
+.card-historia2 img {
+width:400px;
+height:350px;
+border-radius: 50px;
+}
+
+.card-historia2 h1{
+  padding:30px;
+  margin: 0;
+
+}
+
+.card-historia2 p {
+ padding:30px;
+  margin:0;
+}
 /* TEXTO */
 .card-historia .texto-card {
   width: 50%;

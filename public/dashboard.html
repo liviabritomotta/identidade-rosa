@@ -102,7 +102,11 @@
                 return resposta.json();
             })
             .then(function (dados) {
-                criatividade.innerHTML = dados[0].quantidadecriativa
+                let qtdGeral = dados[0].qtdGeral;
+                let qtdCriativa = dados[0].qtdCriativa;
+
+                let porcentagemCriativa = (qtdCriativa / qtdGeral) * 100;
+                criatividade.innerHTML = porcentagemCriativa.toFixed(0) + " %"
 
             })
             .catch(function (erro) {

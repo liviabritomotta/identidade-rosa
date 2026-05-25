@@ -8,7 +8,7 @@ function nascimento(){
 }
 
 function criativa(){
-    var instrucaoSql = `SELECT COUNT(*) as quantidadecriativa from resultado_quiz WHERE criativa > 7`
+    var instrucaoSql = `select count(*) as qtdGeral, (select count(*) from resultado_quiz where criativa > 7) as qtdCriativa from resultado_quiz;`
 
       return database.executar(instrucaoSql);
 }
