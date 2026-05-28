@@ -8,9 +8,6 @@ CREATE TABLE usuario (
 	senha VARCHAR(50)
 );
 
-ALTER TABLE usuario ADD COLUMN dataDeNascimento DATE;
-
-
 
 CREATE TABLE quiz (
     idQuiz INT PRIMARY KEY AUTO_INCREMENT,

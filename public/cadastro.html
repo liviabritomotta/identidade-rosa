@@ -66,6 +66,8 @@
             <span>Data de nascimento:</span>
             <input id="nascimento_input" type="date" placeholder="**/**/****" />
           </div>
+
+
           <div class="campo">
             <span>Senha:</span>
             <input id="senha_input" type="password" placeholder="******" />
@@ -75,6 +77,7 @@
             <input id="confirmacao_senha_input" type="password" placeholder="******" />
           </div>
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
+          <div id="listaUsuarios"></div>
         </div>
           <div class="textologin">
                     <h4>Já tem conta? faça seu <a href="login.html">login</a> aqui</h4>
@@ -101,10 +104,8 @@
 </html>
 
 <script>
-
+let usuariosCadastrados = [];
   // Array para armazenar empresas cadastradas para validação de código de ativação 
-  let listaEmpresasCadastradas = [];
-
   function cadastrar() {
     // aguardar();
 
@@ -118,22 +119,72 @@
 
 
     // Verificando se há algum campo em branco
-    if (
-      nomeVar == "" ||
-      emailVar == "" ||
-      nascVar == "" ||
-      senhaVar == "" ||
-      confirmacaoSenhaVar == "" 
-    ) {
-      cardErro.style.display = "block";
-      mensagem_erro.innerHTML =
-        "(Mensagem de erro para todos os campos em branco)";
+if (
+  nomeVar == "" ||
+  emailVar == "" ||
+  nascVar == "" ||
+  senhaVar == "" ||
+  confirmacaoSenhaVar == ""
+) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "Preencha todos os campos!";
 
-      finalizarAguardar();
-      return false;
-    } else {
+  finalizarAguardar();
+  return false; 
+}
+
+let emailInvalido = true;
+
+for (let i = 0; i < emailVar.length; i++) {
+
+  if (emailVar[i] == "@") {
+    emailInvalido = false;
+  }
+
+}
+
+if (emailInvalido) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "Email inválido!";
+
+  
+
+  finalizarAguardar();
+  return false;
+}
+if (senhaVar != confirmacaoSenhaVar) {
+  cardErro.style.display = "block";
+  mensagem_erro.innerHTML = "As senhas não são iguais!";
+
+  finalizarAguardar();
+  return false;
+}
+
+     else {
       setInterval(sumirMensagem, 5000);
-    }
+    } 
+
+
+    if (usuariosCadastrados.includes(emailVar)) {
+
+    cardErro.style.display = "block";
+    mensagem_erro.innerHTML = "Usuário já cadastrado!";
+
+    finalizarAguardar();
+    return false;}
+
+
+    else {
+usuariosCadastrados.push(nomeVar);
+
+listaUsuarios.innerHTML = "";
+
+for (let i = 0; i < usuariosCadastrados.length; i++) {
+
+    listaUsuarios.innerHTML += ` ${usuariosCadastrados[i]} cadastrado(a)! `;
+}}
+
+    
 
 
 
