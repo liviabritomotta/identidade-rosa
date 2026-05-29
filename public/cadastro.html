@@ -15,11 +15,11 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" />
 </head>
 
-<body >
+<body>
   <!--header inicio-->
   <div class="header">
     <div class="container">
-     <h1 class="titulo">Identidade <span>Rosa</span></h1>
+      <h1 class="titulo">Identidade <span>Rosa</span></h1>
       <ul class="navbar">
         <li>
           <a href="index.html">Inicial</a>
@@ -62,7 +62,7 @@
             <span>E-mail:</span>
             <input id="email_input" type="text" placeholder="meuemail@provedor.com" />
           </div>
-           <div class="campo">
+          <div class="campo">
             <span>Data de nascimento:</span>
             <input id="nascimento_input" type="date" placeholder="**/**/****" />
           </div>
@@ -79,9 +79,9 @@
           <button class="botao" onclick="cadastrar()">Cadastrar</button>
           <div id="listaUsuarios"></div>
         </div>
-          <div class="textologin">
-                    <h4>Já tem conta? faça seu <a href="login.html">login</a> aqui</h4>
-                </div>
+        <div class="textologin">
+          <h4>Já tem conta? faça seu <a href="login.html">login</a> aqui</h4>
+        </div>
         <div id="div_aguardar" class="loading-div">
           <img src="./assets/circle-loading.gif" id="loading-gif" />
         </div>
@@ -94,7 +94,7 @@
   <!--footer inicio-->
   <div class="footer">
     <div class="container">
-      <h4>Feito com amor por aluna Lívia Brito &hearts; SPTech &copy; 202</h4>
+      <h4>Feito com amor por aluna Lívia Brito &hearts; SPTech &copy; 2026</h4>
       <span class="version">v1.0.0</span>
     </div>
   </div>
@@ -103,101 +103,76 @@
 
 </html>
 
-<script>
-let usuariosCadastrados = [];
-  // Array para armazenar empresas cadastradas para validação de código de ativação 
-  function cadastrar() {
-    // aguardar();
 
-    //Recupere o valor da nova input pelo nome do id
-    // Agora vá para o método fetch logo abaixo
+
+<script>
+  let vetorSenhas = [];
+
+  function cadastrar() {
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var nascVar = nascimento_input.value;
     var senhaVar = senha_input.value;
     var confirmacaoSenhaVar = confirmacao_senha_input.value;
 
+    if (
+      nomeVar == "" ||
+      emailVar == "" ||
+      nascVar == "" ||
+      senhaVar == "" ||
+      confirmacaoSenhaVar == ""
+    ) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Preencha todos os campos!";
+      finalizarAguardar();
+      return false;
+    }
 
-    // Verificando se há algum campo em branco
-if (
-  nomeVar == "" ||
-  emailVar == "" ||
-  nascVar == "" ||
-  senhaVar == "" ||
-  confirmacaoSenhaVar == ""
-) {
-  cardErro.style.display = "block";
-  mensagem_erro.innerHTML = "Preencha todos os campos!";
+    let emailInvalido = true;
 
-  finalizarAguardar();
-  return false; 
-}
+    for (let i = 0; i < emailVar.length; i++) {
+      if (emailVar[i] == "@") {
+        emailInvalido = false;
+      }
+    }
 
-let emailInvalido = true;
+    if (emailInvalido) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "Email inválido!";
+      finalizarAguardar();
+      return false;
+    }
 
-for (let i = 0; i < emailVar.length; i++) {
+    vetorSenhas.push(senhaVar);
 
-  if (emailVar[i] == "@") {
-    emailInvalido = false;
-  }
+    for (let i = 0; i < vetorSenhas.length; i++) {
+      if (vetorSenhas[i].length < 6) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "A senha deve possuir pelo menos 6 caracteres!";
+        finalizarAguardar();
+        vetorSenhas = [];
+        return false;
+      } else {
+        setInterval(sumirMensagem, 5000);
+      }
 
-}
+    }
 
-if (emailInvalido) {
-  cardErro.style.display = "block";
-  mensagem_erro.innerHTML = "Email inválido!";
-
-  
-
-  finalizarAguardar();
-  return false;
-}
-if (senhaVar != confirmacaoSenhaVar) {
-  cardErro.style.display = "block";
-  mensagem_erro.innerHTML = "As senhas não são iguais!";
-
-  finalizarAguardar();
-  return false;
-}
-
-     else {
+    if (senhaVar != confirmacaoSenhaVar) {
+      cardErro.style.display = "block";
+      mensagem_erro.innerHTML = "As senhas não são iguais!";
+      finalizarAguardar();
+      return false;
+    } else {
       setInterval(sumirMensagem, 5000);
-    } 
+    }
 
-
-    if (usuariosCadastrados.includes(emailVar)) {
-
-    cardErro.style.display = "block";
-    mensagem_erro.innerHTML = "Usuário já cadastrado!";
-
-    finalizarAguardar();
-    return false;}
-
-
-    else {
-usuariosCadastrados.push(nomeVar);
-
-listaUsuarios.innerHTML = "";
-
-for (let i = 0; i < usuariosCadastrados.length; i++) {
-
-    listaUsuarios.innerHTML += ` ${usuariosCadastrados[i]} cadastrado(a)! `;
-}}
-
-    
-
-
-
-
-    // Enviando o valor da nova input
     fetch("/usuarios/cadastrar", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // crie um atributo que recebe o valor recuperado aqui
-        // Agora vá para o arquivo routes/usuario.js
         nomeServer: nomeVar,
         emailServer: emailVar,
         nascServer: nascVar,
@@ -215,7 +190,7 @@ for (let i = 0; i < usuariosCadastrados.length; i++) {
 
           setTimeout(() => {
             window.location = "login.html";
-          }, "2000");
+          }, 2000);
 
           limparFormulario();
           finalizarAguardar();
@@ -231,8 +206,8 @@ for (let i = 0; i < usuariosCadastrados.length; i++) {
     return false;
   }
 
-
   function sumirMensagem() {
     cardErro.style.display = "none";
   }
+
 </script>
